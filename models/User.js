@@ -72,7 +72,7 @@ const userSchema = new mongoose.Schema(
       },
     },
   },
-  { timestamps: true, collection: 'Users' }
+  { timestamps: true }
 );
 
 UserSchema.index({ location: '2dsphere' });
