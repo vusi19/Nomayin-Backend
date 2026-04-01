@@ -3,10 +3,11 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-const authRoutes = require("./routes/auth");
-const servicesRoutes = require("./routes/services");
-const jobsRoutes = require("./routes/jobs");
-const paymentsRoutes = require("./routes/payments");
+const authRoutes = require('./routes/auth');
+const servicesRoutes = require('./routes/services');
+const jobsRoutes = require('./routes/jobs');
+const paymentsRoutes = require('./routes/payments');
+const usersRoutes = require('./routes/users');
 
 const app = express();
 
@@ -24,10 +25,11 @@ mongoose
 app.get("/", (req, res) => res.send("Nomayin API running"));
 
 // API routes
-app.use("/api/auth", authRoutes);
-app.use("/api/services", servicesRoutes);
-app.use("/api/jobs", jobsRoutes);
-app.use("/api/payments", paymentsRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/services', servicesRoutes);
+app.use('/api/jobs', jobsRoutes);
+app.use('/api/payments', paymentsRoutes);
+app.use('/api/users', usersRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
