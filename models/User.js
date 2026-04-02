@@ -1,22 +1,22 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Name is required'],
+      required: [true, "Name is required"],
       trim: true,
     },
     email: {
       type: String,
-      required: [true, 'Email is required'],
+      required: [true, "Email is required"],
       unique: true,
       lowercase: true,
       trim: true,
     },
     password: {
       type: String,
-      required: [true, 'Password is required'],
+      required: [true, "Password is required"],
       minlength: 6,
     },
     phone: {
@@ -25,9 +25,9 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['customer', 'technician', 'admin'],
+      enum: ["customer", "technician", "admin"],
       required: true,
-      default: 'customer',
+      default: "customer",
     },
     profilePicture: {
       type: String,
@@ -36,8 +36,8 @@ const userSchema = new mongoose.Schema(
     location: {
       type: {
         type: String,
-        enum: ['Point'],
-        default: 'Point',
+        enum: ["Point"],
+        default: "Point",
       },
       coordinates: {
         type: [Number],
@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema(
           validator(value) {
             return Array.isArray(value) && value.length === 2;
           },
-          message: 'Location coordinates must contain [longitude, latitude]',
+          message: "Location coordinates must contain [longitude, latitude]",
         },
       },
     },
@@ -75,6 +75,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-UserSchema.index({ location: '2dsphere' });
+UserSchema.index({ location: "2dsphere" });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", UserSchema);
